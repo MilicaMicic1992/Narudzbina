@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza order</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Pizza order</th>
+            </tr>
+        </thead>
+        <tr>
+                <td><b>Size</b></td>
+                <td>
+                <input type="radio" name="size" checked value="28cm">28cm <br>
+                <input type="radio" name="size" value="32cm">32cm <br>
+                <input type="radio" name="size" value="42cm">42cm
+                </td>
+        </tr>
+        <tr>
+            <td><b>Name</b></td>
+            <td>
+                <input type="radio" name="pizza" value="Margherita" checked>Margherita <br>
+                <input type="radio" name="pizza" value="Marinara">Marinara <br>
+                <input type="radio" name="pizza" value="Prosciutto">Prosciutto <br>
+                <input type="radio" name="pizza" value="Capriciosa">Capriciosa 
+            </td>
+        </tr>
+        <tr>
+            <td><b>Notes</b></td>
+            <td><textarea  id="notes"></textarea></td>
+        </tr>
+        <tr>
+            <td><button id="order">Order</button></td>
+        </tr>
+    </table>
+<script>
+
+const button_order = document.getElementById("order")
+    function click_order(){
+                const rbs_size = document.getElementsByName("size")
+                const rbs_pizza = document.getElementsByName("pizza")
+                const txt_notes = document.getElementById("notes")
+            let size = ""
+            let pizza = ""
+            for(let rb_size of rbs_size){
+                if (rb_size.checked){
+                    size = rb_size.value
+                }
+            }    
+                for(let rb_pizza of rbs_pizza){
+                    if (rb_pizza.checked){
+                        pizza = rb_pizza.value
+                    }
+                }  
+                let html_output = "<h1>Order</h1>"
+                    html_output += "<h2>" + pizza + "</h2>"
+                    html_output += "<p><b>Size:</b>" + size + "</p>"
+                    html_output += "<p><b>Notes:<b/>" + txt_notes.value + "</p>"
+                
+                    const new_window = open(null, "_blank", "width=300,height=400")
+                    new_window.document.write(html_output)
+    }
+
+    button_order.onclick = click_order
+
+
+
+
+
+
+</script>
+    
+
+
+
+</body>
+</html>
